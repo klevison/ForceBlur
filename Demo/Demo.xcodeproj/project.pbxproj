@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92916E73642C37BE58708AF3 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCCA8121B9612C855EEA90E3 /* Pods_Demo.framework */; };
+		BE0DBBF41DF888BD0076F39D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0DBBF31DF888BD0076F39D /* SettingsViewController.swift */; };
 		C5E01A5F1D642D43005E9818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01A5E1D642D43005E9818 /* AppDelegate.swift */; };
 		C5E01A641D642D43005E9818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E01A621D642D43005E9818 /* Main.storyboard */; };
 		C5E01A661D642D43005E9818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5E01A651D642D43005E9818 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		5D9AA14256E74D4E0D365E61 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		7CD429E81E5908491417D5B7 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		BE0DBBF31DF888BD0076F39D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C5E01A5B1D642D43005E9818 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5E01A5E1D642D43005E9818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5E01A631D642D43005E9818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				C5E01A5E1D642D43005E9818 /* AppDelegate.swift */,
 				C5E01A731D64386E005E9818 /* ChatViewController.swift */,
 				C5E01A711D64386E005E9818 /* ImageViewController.swift */,
+				BE0DBBF31DF888BD0076F39D /* SettingsViewController.swift */,
 				C5E01A741D64386E005E9818 /* DemoConversation.swift */,
 				C5E01A701D64386E005E9818 /* ExampleForceBlurPhotoMediaItem.swift */,
 				C5E01A651D642D43005E9818 /* Assets.xcassets */,
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5E01A791D64386E005E9818 /* DemoConversation.swift in Sources */,
+				BE0DBBF41DF888BD0076F39D /* SettingsViewController.swift in Sources */,
 				C5E01A5F1D642D43005E9818 /* AppDelegate.swift in Sources */,
 				C5E01A761D64386E005E9818 /* ImageViewController.swift in Sources */,
 				C5E01A781D64386E005E9818 /* ChatViewController.swift in Sources */,

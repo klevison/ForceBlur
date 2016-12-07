@@ -8,12 +8,14 @@
 
 import UIKit
 import JSQMessagesViewController
- 
-class ChatViewController: JSQMessagesViewController {
+import ForceBlur
+
+class ChatViewController: JSQMessagesViewController, SettingsSliderChangeable {
     
     var messages = DemoConversation
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
+    var radius: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,20 @@ class ChatViewController: JSQMessagesViewController {
 
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "settings", style: .plain, target: self, action: #selector(settingsButtonTapped))
+    }
+    
+    func settingsButtonTapped() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewControllerStoryBoardID") as! SettingsViewController
+        vc.radius = radius
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func valueChanged(value: CGFloat) {
+        radius = value
+        self.collectionView.reloadData()
     }
 
     // MARK: JSQMessagesViewController method overrides
@@ -40,6 +56,7 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressAccessoryButton(_ sender: UIButton) {
         let media = ExampleForceBlurPhotoMediaItem(image: UIImage(named: "preview"))
+        media?.radius = radius
         let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, media: media)
         messages.append(message!)
         
@@ -53,7 +70,20 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, messageDataForItemAt indexPath: IndexPath) -> JSQMessageData {
-        return messages[(indexPath as NSIndexPath).item]
+        var message = messages[(indexPath as NSIndexPath).item]
+        if let _ = message.media as? ForceBlurPhotoMediaItem {
+            let photoItem: ForceBlurPhotoMediaItem = {
+                let photoItem = ExampleForceBlurPhotoMediaItem(image: UIImage(named: "preview"))!
+                photoItem.appliesMediaViewMaskAsOutgoing = false
+                photoItem.radius = radius
+                
+                return photoItem
+            }()
+            
+            message = JSQMessage(senderId: WomanID, displayName: WomanName, media: photoItem)!
+        }
+        
+        return message
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAt indexPath: IndexPath) -> JSQMessageBubbleImageDataSource {
