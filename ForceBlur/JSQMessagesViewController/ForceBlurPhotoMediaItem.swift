@@ -12,14 +12,14 @@ import JSQMessagesViewController
 open class ForceBlurPhotoMediaItem: JSQPhotoMediaItem {
     
     open var secureImageView: ForceBlurImageView!
-    
+    public var radius: CGFloat!
     fileprivate var chachedView: UIView?
 
     open override func mediaView() -> UIView? {
         guard let image = image else { return nil }
         guard chachedView == nil else { return chachedView! }
     
-        secureImageView = ForceBlurImageView(image: image)
+        secureImageView = ForceBlurImageView(image: image, radius: radius)
         secureImageView.frame = CGRect(origin: .zero, size: mediaViewDisplaySize())
         secureImageView.contentMode = .scaleAspectFill
         secureImageView.clipsToBounds = true

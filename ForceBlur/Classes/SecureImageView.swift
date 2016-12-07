@@ -22,10 +22,16 @@ open class ForceBlurImageView: UIImageView {
     
     // There should be UIVisualEffectView, but a mask cannot be applied to it on iOS 10: https://forums.developer.apple.com/thread/50854
     fileprivate let blurredImageView = UIImageView()
+    let defaultRadius: CGFloat = 30
+    var radius: CGFloat! {
+        didSet {
+            blurredImageView.image = image?.applyLightEffect(radius: radius ?? defaultRadius)
+        }
+    }
     
     open override var image: UIImage? {
         didSet {
-            blurredImageView.image = image?.applyLightEffect()
+            blurredImageView.image = image?.applyLightEffect(radius: radius ?? defaultRadius)
             blurredImageView.frame = bounds
         }
     }
@@ -49,6 +55,13 @@ open class ForceBlurImageView: UIImageView {
     }
     
     public override init(image: UIImage?) {
+        super.init(image: image)
+        
+        setupSubviews()
+    }
+    
+    init(image: UIImage?, radius: CGFloat) {
+        self.radius = radius
         super.init(image: image)
         
         setupSubviews()

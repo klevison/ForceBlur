@@ -20,7 +20,7 @@ let DemoConversation: [JSQMessage] = {
     let photoItem: ForceBlurPhotoMediaItem = {
         let photoItem = ExampleForceBlurPhotoMediaItem(image: UIImage(named: "preview"))!
         photoItem.appliesMediaViewMaskAsOutgoing = false
-        photoItem.radius = 10
+        //photoItem.radius = 10
         return photoItem
     }()
     let photoMessage2 = JSQMessage(senderId: WomanID, displayName: WomanName, media: photoItem)!
